@@ -1,28 +1,59 @@
 # DoggScann
-Basic Python port scanner
 
+A fast and versatile port scanner written in Python.
 
+## Description
 
+DoggScann is a command-line tool that allows you to scan a target host for open ports. It supports specifying a range of ports, setting a timeout for connections, and using multiple threads for faster scanning. You can also save the scan results to a file.
 
-Port Scanner
-This is a simple port scanner implemented in Python that allows you to scan a target host for open ports in the range of 1 to 1024.
+## Features
 
-Usage
-To use this script, simply run the following command:
+*   Scan a single port or a range of ports.
+*   Scan a list of ports.
+*   Adjustable timeout for connection attempts.
+*   Multi-threaded scanning for improved performance.
+*   Save scan results to a file.
+*   Attempts to grab service banners.
 
-Copy code
-python portscanner.py
-You will then be prompted to enter the target host you wish to scan. The script will then attempt to scan for open ports on the specified host and print the results to the console.
+## Usage
 
+To use DoggScann, run the script from your terminal with the following command:
 
+```bash
+python3 DoggScann_refactored.py <target_host> [options]
 ```
-python3 DoggScann {Target_IP}
-```
-![Screenshot from 2023-03-15 12-59-38](https://user-images.githubusercontent.com/63917314/225401635-f8a74eb0-7c45-439f-bb00-033dbeabf01f.png)
 
+### Arguments
 
-Dependencies
-This script requires the socket module to be installed. This module is typically included in most Python installations by default.
+*   `target_host`: The target host to scan (e.g., `scanme.nmap.org`).
 
-License
-This script is licensed under the MIT License. Feel free to use and modify this script as you see fit.
+### Options
+
+*   `-p, --ports`: The ports to scan. You can specify a range (e.g., `1-1024`), a list of ports (e.g., `80,443,8080`), or a combination. Defaults to `1-1024`.
+*   `-t, --timeout`: The timeout for each connection attempt in seconds. Defaults to `0.5`.
+*   `-th, --threads`: The number of concurrent threads to use for scanning. Defaults to `100`.
+*   `-o, --output`: The file to save the scan results to.
+
+### Examples
+
+*   Scan the most common ports on `scanme.nmap.org`:
+
+    ```bash
+    python3 DoggScann_refactored.py scanme.nmap.org
+    ```
+
+*   Scan a specific range of ports:
+
+    ```bash
+    python3 DoggScann_refactored.py scanme.nmap.org -p 1-200
+    ```
+
+*   Scan specific ports and save the results to a file:
+
+    ```bash
+    python3 DoggScann_refactored.py scanme.nmap.org -p 80,443,8080 -o scan_results.txt
+    ```
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
